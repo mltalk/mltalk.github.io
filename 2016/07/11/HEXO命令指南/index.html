@@ -264,6 +264,13 @@ hexo n == hexo new &amp;quot;&amp;quot;">
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-Shell"><span class="toc-number">1.</span> <span class="toc-text">Git Shell</span></a></li></ol>
+		
+		</div>
+		
 		<h1 id="Git-Shell"><a href="#Git-Shell" class="headerlink" title="Git Shell"></a>Git Shell</h1><p><code>cd/</code> 定位到c盘根目录</p>
 <p><code>cd hexo</code> 打开hexo文件位置，此时可进行以下hexo命令行：</p>
 <pre><code>hexo g == hexo generate     生成文档
@@ -332,6 +339,13 @@ hexo n == hexo new &quot;&quot;       新建博文
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-Shell"><span class="toc-number">1.</span> <span class="toc-text">Git Shell</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -467,6 +481,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });

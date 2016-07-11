@@ -254,6 +254,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#年过古稀的来访者"><span class="toc-number">1.</span> <span class="toc-text">年过古稀的来访者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这是宪法赋予我的权利"><span class="toc-number">2.</span> <span class="toc-text">这是宪法赋予我的权利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贴在脸上的标签"><span class="toc-number">3.</span> <span class="toc-text">贴在脸上的标签</span></a></li></ol>
+		
+		</div>
+		
 		<p><img src="http://o6nu63qnj.bkt.clouddn.com/zhuomiam.jpg" alt="zha"></p>
 <blockquote>
 <p>临别时，L大爷忽然握住我的手：谢谢你啊！可看得出，他堆满皱纹的笑依旧是苦的。<br>——第一个“患者”</p>
@@ -321,6 +328,13 @@
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#年过古稀的来访者"><span class="toc-number">1.</span> <span class="toc-text">年过古稀的来访者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这是宪法赋予我的权利"><span class="toc-number">2.</span> <span class="toc-text">这是宪法赋予我的权利</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贴在脸上的标签"><span class="toc-number">3.</span> <span class="toc-text">贴在脸上的标签</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -456,6 +470,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
