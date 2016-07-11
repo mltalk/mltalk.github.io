@@ -242,15 +242,30 @@
     <div class="article-content">
         
         <h1 id="Tables-表格"><a href="#Tables-表格" class="headerlink" title="Tables (表格)"></a>Tables (表格)</h1><p>代码：</p>
-<blockquote>
-<p>First Header  | Second Header<br><br>    ————- | ：————-：<br><br>    Content Cell  | Content Cell<br><br>    Content Cell  | Content Cell<br></p>
-</blockquote>
-<p>效果如下：</p>
 <pre><code>First Header  | Second Header
-------------- | :-------------:
+------------- | ：-------------：
 Content Cell  | Content Cell
 Content Cell  | Content Cell
-</code></pre><h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p>   <code>:</code>决定居中的位置</p>
+</code></pre><p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th style="text-align:center">Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td style="text-align:center">Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td style="text-align:center">Content Cell</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><p>   <code>:</code>决定居中的位置</p>
 <pre><code>：----    左对齐
 ：---：   居中对齐
 -----：   右对齐
@@ -511,6 +526,10 @@ hexo n == hexo new &quot;&quot;       新建博文
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 			
 		
@@ -520,10 +539,6 @@ hexo n == hexo new &quot;&quot;       新建博文
 		
 			
 				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
 			
 		
 			
