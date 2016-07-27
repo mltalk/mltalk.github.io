@@ -229,7 +229,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/07/16/校园网飞行指南（一）搬瓦工-影梭/" title="校园网飞行指南（一）搬瓦工+影梭" itemprop="url">校园网飞行指南（一）搬瓦工+影梭</a>
+      <a href="/2016/07/16/校园网飞行指南（一）IPv6-DigitalOcean-影梭/" title="校园网飞行指南（一）搬瓦工+影梭" itemprop="url">校园网飞行指南（一）搬瓦工+影梭</a>
   </h1>
   <p class="article-author">By
        
@@ -247,95 +247,12 @@
         
         <h1 id="校园网飞行指南（一）"><a href="#校园网飞行指南（一）" class="headerlink" title="校园网飞行指南（一）"></a>校园网飞行指南（一）</h1><p>CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。<br><br></p>
 <p><strong>声明：</strong></p>
-<font color="red"><br><br>- 教程会尽可能详细，但挂一漏万在所难免，有任何问题请不要忘记先Google一下。<br><br>- 同是互联网小白，作者不负有给任何人答疑解惑的义务，分享仅源于互联网之精神。<br><br></font>
-
-<p><br><br><strong>目标：</strong><br>利用DigitalOcean搭建影梭（shadowsocks），实现利用IPv6访问国际互联网，顺带实现墙裂，自由访问需要的网站。</p>
-<p><strong>工具：</strong> Xshell、 DigitalOcean账号</p>
-<h1 id="1-创建VPS"><a href="#1-创建VPS" class="headerlink" title="1.创建VPS"></a>1.创建VPS</h1><p>点击Creat Droplet，然后对下面选项依次设置：</p>
-<h2 id="Choose-an-image"><a href="#Choose-an-image" class="headerlink" title="Choose an image"></a>Choose an image</h2><p>大致意思是选择一个操作系统，其实差别不太大，本教程及选择的CentOS系统。即：</p>
-<p><strong>Distributions —— CentOS 7.2 X64</strong></p>
-<h2 id="Choose-a-size"><a href="#Choose-a-size" class="headerlink" title="Choose a size"></a>Choose a size</h2><p>选择第一个最便宜的5$/月即可，据说价钱越贵速度越快，流量是1T但是后台并没有流量统计工具，所以用超了也好像没啥事儿，但滥用会遭到封号，不要太过即可。</p>
-<p><strong>$5/mo</strong></p>
-<h2 id="Choose-a-datacenter-region"><a href="#Choose-a-datacenter-region" class="headerlink" title="Choose a datacenter region"></a>Choose a datacenter region</h2><p>选择服务器所在的位置</p>
-<p>推荐旧金山（San Francisco）节点。<br>延迟小、状态比较稳定</p>
-<p><strong>San Francisco</strong><br><img></p>
-<h2 id="Select-additional-options"><a href="#Select-additional-options" class="headerlink" title="Select additional options"></a>Select additional options</h2><p>其他选项</p>
-<p>勾选IPv6选项</p>
-<p><strong>√ IPv6</strong><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/35674272.jpg" alt="勾选ipv6"></p>
-<h2 id="其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。"><a href="#其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。" class="headerlink" title="其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。"></a>其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。</h2><p><br><br><br></p>
-<h1 id="2-在VPS上安装shadowsocks"><a href="#2-在VPS上安装shadowsocks" class="headerlink" title="2.在VPS上安装shadowsocks"></a>2.在VPS上安装shadowsocks</h1><p>VPS创建好后，你的邮箱会收到一封邮件，里面有你的VPS的相关信息。类似下图:<br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg" alt=""></p>
-<p>打开XShell软件，在中间黑框内输入：</p>
-<pre><code>ssh root@**   
-</code></pre><p>星号是邮件中的IP Address**（星号不要输入） </p>
-<p>然后弹出提示，密码填邮件中的password。这是第一次登录VPS，会要求你改密码，按操作进行即可：输入一遍当前的密码，回车；输入你的新密码，回车。</p>
-<font color="red"><br><strong>注意：linux下输密码时屏幕不带回显，连星号也不显示，小心输入后大胆回车即可</strong><br></font>
-
-<p>然后依次输入下面两行指令，输完一条按一下回车，中间遇到提示直接按y通过。</p>
-<pre><code>yum install python-setuptools &amp;&amp; easy_install pip
-pip install shadowsocks
-</code></pre><p>此时shadowsocks已经安装在了你的VPS上。<br><br><br><br></p>
-<h1 id="3-配置shadowsocks"><a href="#3-配置shadowsocks" class="headerlink" title="3.配置shadowsocks"></a>3.配置shadowsocks</h1><p>然后依次执行以下三条指令：</p>
-<pre><code>cd /etc
-touch shadowsocks.json
-vi shadowsocks.json
-</code></pre><p>此时按 i 键进入编辑模式，XShell黑框的左下角会出现 ­­–INSERT–­­ 字样，然后一次性复制下面的内容到notepad++之类的文本编辑器里，修改password，这个密码就是你以后shadowsocks登录的密码），然后右键粘贴到软件里面。</p>
-<pre><code>{
-    &quot;server&quot;:&quot;::&quot;,
-    &quot;server_port&quot;:443,
-    &quot;local_address&quot;: &quot;127.0.0.1&quot;,
-    &quot;local_port&quot;:1080,
-    &quot;password&quot;:&quot;mypassword&quot;,
-    &quot;timeout&quot;:300,
-    &quot;method&quot;:&quot;aes-256-cfb&quot;,
-    &quot;fast_open&quot;: false
-}
-</code></pre><p>复制完成后，按 Esc 键退出编辑模式，此时XShell黑框左下角的 ­­–INSERT–­ 字样消失，按下 : 键，输入 wq 后回车，此时文件保存完毕并退出了vi编辑器。</p>
-<font color="red"><br>提醒：这里千万不要将复制的代码粘贴到windows的记事本中修改后粘贴过来，建议使用notepad++之类的文本编辑器，不然会出现编码错误。<br></font>
-
-
-<p>然后在xshell输入：</p>
-<pre><code>cd
-</code></pre><p>即回到服务器根目录。<br><br><br><br></p>
-<h1 id="4-配置IPv6"><a href="#4-配置IPv6" class="headerlink" title="4.配置IPv6"></a>4.配置IPv6</h1><p>登录digital ocean网站</p>
-<p>双击你创建好的droplet，然后选择左侧边栏中的 Networking</p>
-<p>你将在页面最底端看到如下ipv6信息：</p>
-<p><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/23932445.jpg" alt=""><br>Alt text<br>这时，在Xshell中依次输入下面两条命令，并回车：</p>
-<pre><code>ip -6 addr add public_ipv6_address/64 dev eth0
-ip -6 route add default via public_ipv6_gateway dev eth0
-</code></pre><p>图中的<strong>public_ipv6_address</strong>和<strong>public_ipv6_gateway</strong>就是图片中对应打马的具体内容 </p>
-<font color="red"><br>注意：PUBLIC IPV6 ADDRESS那一栏的ipv6地址，digital ocean有时会在尾部加上了/64. 复制时不要把/64复制进去，即<code>/64</code>只出现一次。<br></font>
-
-<p>到这里就把ipv6配置完了。<br><br><br><br></p>
-<h1 id="5-启动shadowsocks服务"><a href="#5-启动shadowsocks服务" class="headerlink" title="5.启动shadowsocks服务"></a>5.启动shadowsocks服务</h1><p>用下面的指令可分别在后台启动或者停止shadowsocks服务：</p>
-<pre><code>ssserver -c /etc/shadowsocks.json -d start
-ssserver -c /etc/shadowsocks.json -d stop
-</code></pre><p>至此，基本的服务端配置就结束了，可以正常使用了。</p>
-<p><font color="red"><br>注意：如果在启动shadowsocks服务时报错，显示“Expecting，Delimiter…”之类的报错语句，是因为我前面所说的你用的windows记事本或其他类似的软件修改配置参数造成字符格式不对。可以换其他编辑器试试。<br></font><br><br><br><br></p>
-<h1 id="6-shadowsocks客户端设置"><a href="#6-shadowsocks客户端设置" class="headerlink" title="6.shadowsocks客户端设置"></a>6.shadowsocks客户端设置</h1><p><strong>与上面的配置一一对应：</strong></p>
-<ul>
-<li>服务器IP即 上面的ipv6地址或者ipv4地址</li>
-</ul>
-<ul>
-<li>服务器端口(server_port)：默认443</li>
-</ul>
-<ul>
-<li>密码是上面设置中的 mypassword</li>
-</ul>
-<ul>
-<li>加密方式（method）: aes-256-cfb</li>
-</ul>
-<ul>
-<li>代理端口（local_port）：1080</li>
-</ul>
-<p><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/87267477.jpg" alt=""><br><br><br><br></p>
-<h1 id="7-Proxifier全局代理"><a href="#7-Proxifier全局代理" class="headerlink" title="7.Proxifier全局代理"></a>7.Proxifier全局代理</h1><p>利用Proxifier实现本地所有软件使用代理。</p>
-<p><br><br><br></p>
-<h1 id="8-小米随身WIFI共享网络"><a href="#8-小米随身WIFI共享网络" class="headerlink" title="8.小米随身WIFI共享网络"></a>8.小米随身WIFI共享网络</h1><p>仅小米随身WiFi可实现共享，360暂无解决办法。</p>
-<p><br><br><br><br>参考链接：<a href="http://www.captainchen.me/post/2016-02-10" target="_blank" rel="external">http://www.captainchen.me/post/2016-02-10</a></p>
-
+<font color=red  ><br><br>- 教程会尽可能详细，但挂一漏万在所难免，有任何问题请不要忘记先Google一下。<br><br>- 同是互联网小白，作者不负有给任何人答疑解惑的义务，分享仅源于互联网之精神。<br><br></font><br>
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/07/16/校园网飞行指南（一）IPv6-DigitalOcean-影梭/#more">阅读全文</a>
           
        </p>
     </div>
@@ -356,7 +273,7 @@ ssserver -c /etc/shadowsocks.json -d stop
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2016/07/16/校园网飞行指南（一）搬瓦工-影梭/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/07/16/校园网飞行指南（一）搬瓦工-影梭/" data-count-type="comments">&nbsp;</a>
+		<a href="/2016/07/16/校园网飞行指南（一）IPv6-DigitalOcean-影梭/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/07/16/校园网飞行指南（一）IPv6-DigitalOcean-影梭/" data-count-type="comments">&nbsp;</a>
 	
 </div>
 
@@ -685,15 +602,15 @@ hexo n == hexo new &quot;&quot;       新建博文
 			
 		
 			
+				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/法律诊所/" title="法律诊所">法律诊所<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
 			
 		
 			
