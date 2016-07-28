@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg">
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/23932445.jpg">
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/87267477.jpg">
-<meta property="og:updated_time" content="2016-07-28T06:40:18.932Z">
+<meta property="og:updated_time" content="2016-07-28T06:43:47.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="校园网飞行指南（一）IPv6-DigitalOcean-影梭">
 <meta name="twitter:description" content="校园网飞行指南（一）CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。
@@ -262,9 +262,9 @@
 		
 		</div>
 		
-		<h1 id="校园网飞行指南（一）"><a href="#校园网飞行指南（一）" class="headerlink" title="校园网飞行指南（一）"></a>校园网飞行指南（一）</h1><p>CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。<br><br></p>
+		<h1 id="校园网飞行指南（一）"><a href="#校园网飞行指南（一）" class="headerlink" title="校园网飞行指南（一）"></a>校园网飞行指南（一）</h1><p>CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。</p>
 <p><strong>声明：</strong></p>
-<font color="red"><br><br>- 教程会尽可能详细，但挂一漏万在所难免，有任何问题请不要忘记先Google一下。<br><br>- 同是互联网小白，作者不负有给任何人答疑解惑的义务，分享仅源于互联网之精神。<br><br></font><br><a id="more"></a><br><br><br><strong>目标：</strong><br>利用DigitalOcean搭建影梭（shadowsocks），实现利用IPv6访问国际互联网，顺带实现墙裂，自由访问需要的网站。<br><br><strong>工具：</strong> Xshell、 DigitalOcean账号<br><br># 1.创建VPS #<br><br>点击Creat Droplet，然后对下面选项依次设置：<br><br><strong>Choose an image</strong><br>大致意思是选择一个操作系统，其实差别不太大，本教程及选择的CentOS系统。即：<br><br><strong>Distributions —— CentOS 7.2 X64</strong><br><br><strong>Choose a size </strong><br>选择第一个最便宜的5$/月即可，据说价钱越贵速度越快，流量是1T但是后台并没有流量统计工具，所以用超了也好像没啥事儿，但滥用会遭到封号，不要太过即可。<br><br><strong>$5/mo</strong><br><br><strong>Choose a datacenter region</strong><br>选择服务器所在的位置<br><br>推荐旧金山（San Francisco）节点。<br>延迟小、状态比较稳定<br><br><strong>Select additional options</strong><br>其他选项<br><br>勾选IPv6选项<br><br><strong>√ IPv6</strong><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/35674272.jpg" alt="勾选ipv6"><br><strong>其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。</strong><br><br><br><br># 2.在VPS上安装shadowsocks #<br><br>VPS创建好后，你的邮箱会收到一封邮件，里面有你的VPS的相关信息。类似下图:<br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg" alt=""><br><br>打开XShell软件，在中间黑框内输入：<br><br>    ssh root@<strong><br><br>星号是邮件中的IP Address</strong>（星号不要输入）<br><br>然后弹出提示，密码填邮件中的password。这是第一次登录VPS，会要求你改密码，按操作进行即可：输入一遍当前的密码，回车；输入你的新密码，回车。<br><br><font color="red"><br><strong>注意：linux下输密码时屏幕不带回显，连星号也不显示，小心输入后大胆回车即可</strong><br></font>
+<font color="red"><br><br>- 教程会尽可能详细，但挂一漏万在所难免，有任何问题请不要忘记先Google一下。<br>- 同是互联网小白，作者不负有给任何人答疑解惑的义务，分享仅源于互联网之精神。<br><br></font><br><a id="more"></a><br><br><br><strong>目标：</strong><br>利用DigitalOcean搭建影梭（shadowsocks），实现利用IPv6访问国际互联网，顺带实现墙裂，自由访问需要的网站。<br><br><strong>工具：</strong> Xshell、 DigitalOcean账号<br><br># 1.创建VPS #<br><br>点击Creat Droplet，然后对下面选项依次设置：<br><br><strong>Choose an image</strong><br>大致意思是选择一个操作系统，其实差别不太大，本教程及选择的CentOS系统。即：<br><br><strong>Distributions —— CentOS 7.2 X64</strong><br><br><strong>Choose a size </strong><br>选择第一个最便宜的5$/月即可，据说价钱越贵速度越快，流量是1T但是后台并没有流量统计工具，所以用超了也好像没啥事儿，但滥用会遭到封号，不要太过即可。<br><br><strong>$5/mo</strong><br><br><strong>Choose a datacenter region</strong><br>选择服务器所在的位置<br><br>推荐旧金山（San Francisco）节点。<br>延迟小、状态比较稳定<br><br><strong>Select additional options</strong><br>其他选项<br><br>勾选IPv6选项<br><br><strong>√ IPv6</strong><br><center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/35674272.jpg" alt="勾选ipv6"><br></center><br><strong>其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。</strong><br><br><br><br># 2.在VPS上安装shadowsocks #<br><br>VPS创建好后，你的邮箱会收到一封邮件，里面有你的VPS的相关信息。类似下图:<br><br><center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg" alt=""><br></center><br>打开XShell软件，在中间黑框内输入：<br><br>    ssh root@<strong><br><br>星号是邮件中的IP Address</strong>（星号不要输入）<br><br>然后弹出提示，密码填邮件中的password。这是第一次登录VPS，会要求你改密码，按操作进行即可：输入一遍当前的密码，回车；输入你的新密码，回车。<br><br><font color="red"><br><strong>注意：linux下输密码时屏幕不带回显，连星号也不显示，小心输入后大胆回车即可</strong><br></font>
 
 <p>然后依次输入下面两行指令，输完一条按一下回车，中间遇到提示直接按y通过。</p>
 <pre><code>yum install python-setuptools &amp;&amp; easy_install pip
@@ -402,15 +402,15 @@ ssserver -c /etc/shadowsocks.json -d stop
 			
 		
 			
-				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
 			
 		
 			
