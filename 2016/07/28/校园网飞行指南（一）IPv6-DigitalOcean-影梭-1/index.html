@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg">
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/23932445.jpg">
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/87267477.jpg">
-<meta property="og:updated_time" content="2016-08-02T14:13:25.632Z">
+<meta property="og:updated_time" content="2016-08-02T14:35:40.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="校园网飞行指南（一）IPv6-DigitalOcean-影梭">
 <meta name="twitter:description" content="CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。
@@ -252,13 +252,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">创建VPS服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">安装shadowsocks程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">配置shadowsocks</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">配置IPv6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">启动shadowsocks服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">shadowsocks客户端设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">Proxifier全局代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">小米随身WIFI共享网络</span></a></li></ol>
-		
-		</div>
-		
 		<p>CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。</p>
 <p>声明： <font color="red">教程会尽可能详细，但挂一漏万在所难免，有任何问题请不要忘记先Google一下。同是互联网小白，作者不负有给任何人答疑解惑的义务，分享仅源于互联网之精神。</font><br><a id="more"></a></p>
 <p>目标：利用<a href="https://www.digitalocean.com/" target="_blank" rel="external">DigitalOcean</a>提供的VPS搭建影梭（shadowsocks），实现利用IPv6访问国际互联网，顺带实现墙裂，自由访问需要的网站。</p>
@@ -370,13 +363,6 @@ ssserver -c /etc/shadowsocks.json -d stop</pre>
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">创建VPS服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">安装shadowsocks程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">配置shadowsocks</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">配置IPv6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">启动shadowsocks服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">shadowsocks客户端设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">7.</span> <span class="toc-text">Proxifier全局代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">8.</span> <span class="toc-text">小米随身WIFI共享网络</span></a></li></ol>
- 
-  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -555,8 +541,6 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
