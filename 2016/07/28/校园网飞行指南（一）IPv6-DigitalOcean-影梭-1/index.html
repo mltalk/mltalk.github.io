@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg">
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/23932445.jpg">
 <meta property="og:image" content="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/87267477.jpg">
-<meta property="og:updated_time" content="2016-08-02T13:49:32.009Z">
+<meta property="og:updated_time" content="2016-08-02T13:59:29.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="校园网飞行指南（一）IPv6-DigitalOcean-影梭">
 <meta name="twitter:description" content="CUPL网费贵么？大概不贵，一个月10元/20G流量还算便宜。网络带宽也蛮良心，千兆网口也能让你的下载速度飞起来。如果你是一个“正常”的网络用户，大概不需要下面的折腾。如果现状足够满足你的需求，请不要在这里浪费时间；如果你不嫌麻烦且希望有些突破，那么就听我絮叨絮叨。
@@ -263,29 +263,27 @@
 <p>声明： <font color="red">教程会尽可能详细，但挂一漏万在所难免，有任何问题请不要忘记先Google一下。同是互联网小白，作者不负有给任何人答疑解惑的义务，分享仅源于互联网之精神。</font><br><a id="more"></a></p>
 <p>目标：利用<a href="https://www.digitalocean.com/" target="_blank" rel="external">DigitalOcean</a>提供的VPS搭建影梭（shadowsocks），实现利用IPv6访问国际互联网，顺带实现墙裂，自由访问需要的网站。</p>
 <p>工具：Xshell、 DigitalOcean账号、notepad++等</p>
-<h1>创建VPS服务</h1><br><strong>点击Creat Droplet，然后对下面选项依次设置：</strong><br><br>1.Choose an image<br>大致意思是选择一个操作系统，其实差别不太大，本教程及选择的CentOS系统。即：<br>Distributions —— CentOS 7.2 X64<br><br>2.Choose a size<br>选择第一个最便宜的5$/月即可，据说价钱越贵速度越快，流量是1T但是后台并没有流量统计工具，所以用超了也好像没啥事儿，但滥用会遭到封号，不要太过即可。<br><br>3.Choose a datacenter region<br>选择服务器所在的位置,推荐旧金山（San Francisco）节点。延迟小、状态比较稳定<br><br>4.Select additional options<br>其他选项：勾选IPv6选项<br><center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/35674272.jpg" alt="勾选ipv6"><br></center><br><strong>其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。</strong><br><h1>安装shadowsocks程序</h1><br>VPS创建好后，你的邮箱会收到一封邮件，里面有你的VPS的相关信息。类似下图:<br><br><center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg" alt=""><br></center><br>打开XShell软件，在中间黑框内输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@**</span><br></pre></td></tr></table></figure><br><br>星号是邮件中的IP Address（星号不要输入）<br><br>然后弹出提示，密码填邮件中的password。这是第一次登录VPS，会要求你改密码，按操作进行即可：输入一遍当前的密码，回车；输入你的新密码，回车。<br><br><font color="red"><br><strong>注意：linux下输密码时屏幕不带回显，连星号也不显示，小心输入后大胆回车即可</strong><br></font><br><br>然后依次输入下面两行指令，输完一条按一下回车，中间遇到提示直接按y通过。<br><br>    yum install python-setuptools &amp;&amp; easy_install pip<br>    pip install shadowsocks<br><br>此时shadowsocks已经安装在了你的VPS上。<br><h1>配置shadowsocks</h1><br>然后依次执行以下三条指令：<br><br>    cd /etc<br>    touch shadowsocks.json<br>    vi shadowsocks.json<br><br>此时按 i 键进入编辑模式，XShell黑框的左下角会出现 ­­–INSERT–­­ 字样，然后一次性复制下面的内容到notepad++之类的文本编辑器里，修改password，这个密码就是你以后shadowsocks登录的密码），然后右键粘贴到软件里面。<br><br>    {<br>        “server”:”::”,<br>        “server_port”:443,<br>        “local_address”: “127.0.0.1”,<br>        “local_port”:1080,<br>        “password”:”mypassword”,<br>        “timeout”:300,<br>        “method”:”aes-256-cfb”,<br>        “fast_open”: false<br>    }<br><br>复制完成后，按 Esc 键退出编辑模式，此时XShell黑框左下角的 ­­–INSERT–­ 字样消失，按下 : 键，输入 wq 后回车，此时文件保存完毕并退出了vi编辑器。<br><br><br><font color="red"><br>提醒：这里千万不要将复制的代码粘贴到windows的记事本中修改后粘贴过来，建议使用notepad++之类的文本编辑器，不然会出现编码错误。<br></font><br><br><br>然后在xshell输入：<br><br>    cd<br><br>即回到服务器根目录。<br><br><h1>配置IPv6</h1>
+<h1>创建VPS服务</h1><br><strong>点击Creat Droplet，然后对下面选项依次设置：</strong><br><br>1.Choose an image<br>大致意思是选择一个操作系统，其实差别不太大，本教程及选择的CentOS系统。即：<br>Distributions —— CentOS 7.2 X64<br><br>2.Choose a size<br>选择第一个最便宜的5$/月即可，据说价钱越贵速度越快，流量是1T但是后台并没有流量统计工具，所以用超了也好像没啥事儿，但滥用会遭到封号，不要太过即可。<br><br>3.Choose a datacenter region<br>选择服务器所在的位置,推荐旧金山（San Francisco）节点。延迟小、状态比较稳定<br><br>4.Select additional options<br>其他选项：勾选IPv6选项<br><center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/35674272.jpg" alt="勾选ipv6"><br></center><br><strong>其他选项默认即可，然后在页面底部点击Create，便自动创建一个VPS。</strong><br><h1>安装shadowsocks程序</h1><br>VPS创建好后，你的邮箱会收到一封邮件，里面有你的VPS的相关信息。类似下图:<br><br><center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/33518318.jpg" alt=""><br></center><br>打开XShell软件，在中间黑框内输入：<br><pre><br>ssh root@<strong><br></strong></pre><br>星号是邮件中的IP Address（星号不要输入）<br><br>然后弹出提示，密码填邮件中的password。这是第一次登录VPS，会要求你改密码，按操作进行即可：输入一遍当前的密码，回车；输入你的新密码，回车。<br><br><font color="red">
+注意：linux下输密码时屏幕不带回显，连星号也不显示，小心输入后大胆回车即可**<br></font><br><br>然后依次输入下面两行指令，输完一条按一下回车，中间遇到提示直接按y通过。<br><pre><br>    yum install python-setuptools &amp;&amp; easy_install pip<br>    pip install shadowsocks<br></pre><br>此时shadowsocks已经安装在了你的VPS上。<br><h1>配置shadowsocks</h1><br>然后依次执行以下三条指令：<br><pre><br>    cd /etc<br>    touch shadowsocks.json<br>    vi shadowsocks.json<br></pre><br>此时按 i 键进入编辑模式，XShell黑框的左下角会出现 ­­–INSERT–­­ 字样，然后一次性复制下面的内容到notepad++之类的文本编辑器里，修改password，这个密码就是你以后shadowsocks登录的密码），然后右键粘贴到软件里面。<br><pre><br>    {<br>        “server”:”::”,<br>        “server_port”:443,<br>        “local_address”: “127.0.0.1”,<br>        “local_port”:1080,<br>        “password”:”mypassword”,<br>        “timeout”:300,<br>        “method”:”aes-256-cfb”,<br>        “fast_open”: false<br>    }<br></pre><br>复制完成后，按 Esc 键退出编辑模式，此时XShell黑框左下角的 ­­–INSERT–­ 字样消失，按下 : 键，输入 wq 后回车，此时文件保存完毕并退出了vi编辑器。<br><br><br><font color="red"><br>提醒：这里千万不要将复制的代码粘贴到windows的记事本中修改后粘贴过来，建议使用notepad++之类的文本编辑器，不然会出现编码错误。<br></font><br><br><br>然后在xshell输入：<br><pre><br>    cd<br></pre><br>回车即回到服务器根目录。<br><br><h1>配置IPv6</h1>
 
 <p>登录digital ocean网站</p>
 <p>双击你创建好的droplet，然后选择左侧边栏中的 Networking</p>
 <p>你将在页面最底端看到如下ipv6信息：</p>
 <p><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/23932445.jpg" alt=""><br>Alt text<br>这时，在Xshell中依次输入下面两条命令，并回车：</p>
-<pre><code>ip -6 addr add public_ipv6_address/64 dev eth0
-ip -6 route add default via public_ipv6_gateway dev eth0
-</code></pre><p>图中的<strong>public_ipv6_address</strong>和<strong>public_ipv6_gateway</strong>就是图片中对应打马的具体内容 </p>
+<p><pre><br>    ip -6 addr add public_ipv6_address/64 dev eth0<br>    ip -6 route add default via public_ipv6_gateway dev eth0<br></pre><br>图中的<strong>public_ipv6_address</strong>和<strong>public_ipv6_gateway</strong>就是图片中对应打马的具体内容 </p>
 <font color="red"><br>注意：PUBLIC IPV6 ADDRESS那一栏的ipv6地址，digital ocean有时会在尾部加上了/64. 复制时不要把/64复制进去，即<code>/64</code>只出现一次。<br></font>
 
 <p>到这里就把ipv6配置完了。</p>
 <h1>启动shadowsocks服务</h1>
 
 <p>用下面的指令可分别在后台启动或者停止shadowsocks服务：</p>
-<pre><code>ssserver -c /etc/shadowsocks.json -d start
-ssserver -c /etc/shadowsocks.json -d stop
-</code></pre><p>至此，基本的服务端配置就结束了，可以正常使用了。</p>
+<p><pre><br>    ssserver -c /etc/shadowsocks.json -d start<br>    ssserver -c /etc/shadowsocks.json -d stop<br></pre><br>至此，基本的服务端配置就结束了，可以正常使用了。</p>
 <font color="red"><br>注意：如果在启动shadowsocks服务时报错，显示“Expecting，Delimiter…”之类的报错语句，是因为我前面所说的你用的windows记事本或其他类似的软件修改配置参数造成字符格式不对。可以换其他编辑器试试。<br></font>
 
 <h1>shadowsocks客户端设置</h1>
 
 <p><strong>与上面的配置一一对应：</strong></p>
+<p><pre></pre></p>
 <ul>
 <li>服务器IP即 上面的ipv6地址或者ipv4地址</li>
 </ul>
@@ -299,10 +297,10 @@ ssserver -c /etc/shadowsocks.json -d stop
 <li>加密方式（method）: aes-256-cfb</li>
 </ul>
 <ul>
-<li>代理端口（local_port）：1080</li>
-</ul>
-<center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/87267477.jpg" alt=""><br></center> 
+<li>代理端口（local_port）：1080<br>      <center><br><img src="http://7xqr14.com1.z0.glb.clouddn.com/16-2-10/87267477.jpg" alt=""><br></center> 
 
+</li>
+</ul>
 <p></p><h1>Proxifier全局代理</h1><br>利用Proxifier实现本地所有软件使用代理。<p></p>
 <p></p><h1>小米随身WIFI共享网络</h1><br>仅小米随身WiFi可实现共享，360暂无解决办法。<p></p>
 <p><a href="http://www.captainchen.me/post/2016-02-10" target="_blank" rel="external">参考链接</a></p>
@@ -384,10 +382,6 @@ ssserver -c /etc/shadowsocks.json -d stop
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 			
 		
@@ -397,6 +391,10 @@ ssserver -c /etc/shadowsocks.json -d stop
 		
 			
 				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 			
 		
 			
