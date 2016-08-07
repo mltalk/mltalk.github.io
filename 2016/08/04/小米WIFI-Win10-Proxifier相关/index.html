@@ -27,7 +27,7 @@
 2.打开默认安装路径 C:\Program Files (x86)\XiaoMi\MiWiFi\drivers，这里面是客户端内置的一些驱动程序。
 3.打开文件夹Win81x64（根据你的电脑情况，这里选择的是64位系统的驱动），对 netr28ux.inf 执行右键 – 安装。
 4.安装成功，插入小米随身Wi">
-<meta property="og:updated_time" content="2016-08-04T15:33:18.448Z">
+<meta property="og:updated_time" content="2016-08-07T14:42:04.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小米WiFi-Win10-Proxifier相关">
 <meta name="twitter:description" content="小米WiFi在Win10中创建
@@ -262,7 +262,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">小米WiFi在Win10中创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">SS+Proxifier环境中 小米WiFi共享问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">问题表现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">解决方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">网络环境：</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">小米WiFi在Win10中创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">SS+Proxifier环境中 小米WiFi共享问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">问题表现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">解决方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">网络环境：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.</span> <span class="toc-text">更新</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -286,6 +286,14 @@
 
 <p>毕竟这样的网络结构稍显复杂：在SS通过IPv6地址访问外网，通过Proxifier实现本地的全局代理，然后通过小米WiFi将电脑网络共享给平板电脑和手机，其中涉及到多个网络端口设置，网络逻辑太过复杂。</p>
 <p>其中小米WiFi与手机的关系也非对等网，而像是一种层级关系，Proxifier将网络分配给小米WiFi程序，然后转发给下层设备。而360WiFi却无法实现将WiFi共享，可能就是程序逻辑的差异。</p>
+<p></p><h2>更新</h2><br>2016/8/7 22:26:59 <p></p>
+<p>查阅资料，有说法称小米随身WiFi的网络逻辑是路由模式，果然，客户端中显示的路由地址是：10.0.2.2，于是更稳定的办法产生了：在手机连接到WiFi之后，在高级设置里将代理地址改为手动模式，具体是：</p>
+<pre>
+主机名：10.0.2.2 （即WiFi信息中显示的路由器地址）
+端口：1080 （默认）
+</pre>
+
+<p>这时候再通过手机上网，Proxifier界面里不显示访问请求，但网络就可以畅通访问，惊喜的是，APP Store 与 YouTube也能直接使用。但是会出现微博小视频、网易云音乐等无法播放的问题，我的解决方法是，同时在手机端打开SS软件，再走一遍代理。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -335,7 +343,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">小米WiFi在Win10中创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">SS+Proxifier环境中 小米WiFi共享问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">问题表现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">解决方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">网络环境：</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">小米WiFi在Win10中创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">SS+Proxifier环境中 小米WiFi共享问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.1.</span> <span class="toc-text">问题表现：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.2.</span> <span class="toc-text">解决方法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.3.</span> <span class="toc-text">网络环境：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.4.</span> <span class="toc-text">更新</span></a></li></ol></li></ol>
  
   </div>
 
@@ -351,11 +359,15 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/小米/" title="小米">小米<sup>1</sup></a></li>
+				<li><a href="/tags/Github优惠包/" title="Github优惠包">Github优惠包<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Github优惠包/" title="Github优惠包">Github优惠包<sup>1</sup></a></li>
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 			
 		
 			
@@ -367,19 +379,15 @@
 			
 		
 			
+				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/Root/" title="Root">Root<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+				<li><a href="/tags/小米/" title="小米">小米<sup>1</sup></a></li>
 			
 		
 			
