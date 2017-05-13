@@ -229,7 +229,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/04/小米WIFI-Win10-Proxifier相关/" title="小米WiFi-Win10-Proxifier相关" itemprop="url">小米WiFi-Win10-Proxifier相关</a>
+      <a href="/2016/08/04/小米WIFI-Proxifier相关/" title="随身WiFi-Proxifier-影梭" itemprop="url">随身WiFi-Proxifier-影梭</a>
   </h1>
   <p class="article-author">By
        
@@ -252,31 +252,11 @@
 <p>3.打开文件夹Win81x64（根据你的电脑情况，这里选择的是64位系统的驱动），对 netr28ux.inf 执行右键 – 安装。</p>
 <p>4.安装成功，插入小米随身WiFi就能够创建WiFi了。</p>
 <p>原理：安装对应的驱动程序，Win10与Win8.1最接近。</p>
-<h1>SS+Proxifier环境中 小米WiFi共享问题</h1>
-
-<h2>问题表现：</h2>
-
-<p>在此环境下可成功创建WiFi，但在手机平板客户端浏览网页时，出现“目标网站拒绝我们的链接请求”等类似错误。</p>
-<h2>解决方法：</h2>
-
-<p>经验：在开启小米WiFi后，清空proxifier的代理服务器设置，再重新设置，发现就OK了。原理暂不清楚，且可能需要多次尝试。</p>
-<p>猜测：可能存在某些程序冲突的问题。</p>
-<h2>网络环境：</h2>
-
-<p>毕竟这样的网络结构稍显复杂：在SS通过IPv6地址访问外网，通过Proxifier实现本地的全局代理，然后通过小米WiFi将电脑网络共享给平板电脑和手机，其中涉及到多个网络端口设置，网络逻辑太过复杂。</p>
-<p>其中小米WiFi与手机的关系也非对等网，而像是一种层级关系，Proxifier将网络分配给小米WiFi程序，然后转发给下层设备。而360WiFi却无法实现将WiFi共享，可能就是程序逻辑的差异。</p>
-<p></p><h2>更新</h2><br>2016/8/7 22:26:59 <p></p>
-<p>查阅资料，有说法称小米随身WiFi的网络逻辑是路由模式，果然，客户端中显示的路由地址是：10.0.2.2，于是更稳定的办法产生了：在手机连接到WiFi之后，在高级设置里将代理地址改为手动模式，具体是：</p>
-<pre>
-主机名：10.0.2.2 （即WiFi信息中显示的路由器地址）
-端口：1080 （默认）
-</pre>
-
-<p>这时候再通过手机上网，Proxifier界面里不显示访问请求，但网络就可以畅通访问，惊喜的是，APP Store 与 YouTube也能直接使用。但是会出现微博小视频、网易云音乐等无法播放的问题，我的解决方法是，同时在手机端打开SS软件，再走一遍代理。</p>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/08/04/小米WIFI-Proxifier相关/#more">阅读全文</a>
           
        </p>
     </div>
@@ -314,7 +294,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/02/如何申请Github教育优惠包/" title="在校生如何申请Github教育优惠包" itemprop="url">在校生如何申请Github教育优惠包</a>
+      <a href="/2016/08/02/申请Github教育优惠包/" title="在校生如何申请Github教育优惠包" itemprop="url">在校生如何申请Github教育优惠包</a>
   </h1>
   <p class="article-author">By
        
@@ -336,7 +316,7 @@
         
         <p class="article-more-link">
           
-            <a href="/2016/08/02/如何申请Github教育优惠包/#more">阅读全文</a>
+            <a href="/2016/08/02/申请Github教育优惠包/#more">阅读全文</a>
           
        </p>
     </div>
@@ -374,7 +354,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/07/28/校园网飞行指南（一）IPv6-DigitalOcean-影梭-1/" title="校园网飞行指南（一）IPv6-DigitalOcean-影梭" itemprop="url">校园网飞行指南（一）IPv6-DigitalOcean-影梭</a>
+      <a href="/2016/07/28/IPv6-DigitalOcean-影梭/" title="校园网飞行指南（一）IPv6-DigitalOcean-影梭" itemprop="url">校园网飞行指南（一）IPv6-DigitalOcean-影梭</a>
   </h1>
   <p class="article-author">By
        
@@ -396,7 +376,7 @@
         
         <p class="article-more-link">
           
-            <a href="/2016/07/28/校园网飞行指南（一）IPv6-DigitalOcean-影梭-1/#more">阅读全文</a>
+            <a href="/2016/07/28/IPv6-DigitalOcean-影梭/#more">阅读全文</a>
           
        </p>
     </div>
@@ -434,7 +414,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/07/28/小米4-安卓6-0-Root权限获取办法/" title="小米4 安卓6.0+ Root权限获取办法" itemprop="url">小米4 安卓6.0+ Root权限获取办法</a>
+      <a href="/2016/07/28/小米4-安卓6-0-Root权限/" title="小米4 安卓6.0+ Root权限获取办法" itemprop="url">小米4 安卓6.0+ Root权限获取办法</a>
   </h1>
   <p class="article-author">By
        
@@ -456,7 +436,7 @@
         
         <p class="article-more-link">
           
-            <a href="/2016/07/28/小米4-安卓6-0-Root权限获取办法/#more">阅读全文</a>
+            <a href="/2016/07/28/小米4-安卓6-0-Root权限/#more">阅读全文</a>
           
        </p>
     </div>
@@ -515,7 +495,31 @@
 ------------- | ：-------------：
 Content Cell  | Content Cell
 Content Cell  | Content Cell
-</code></pre>
+</code></pre><p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th style="text-align:center">Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td style="text-align:center">Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td style="text-align:center">Content Cell</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>tips</em></strong></p>
+<p>   <code>:</code>决定居中的位置</p>
+<pre><code>：----    左对齐
+：---：   居中对齐
+-----：   右对齐
+</code></pre><hr>
         
         
         <p class="article-more-link">
@@ -572,23 +576,7 @@ Content Cell  | Content Cell
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/Root/" title="Root">Root<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Github优惠包/" title="Github优惠包">Github优惠包<sup>1</sup></a></li>
 			
 		
 			
@@ -596,15 +584,11 @@ Content Cell  | Content Cell
 			
 		
 			
-				<li><a href="/tags/小米/" title="小米">小米<sup>1</sup></a></li>
+				<li><a href="/tags/Markdown/" title="Markdown">Markdown<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/小米WiFi/" title="小米WiFi">小米WiFi<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/法律诊所/" title="法律诊所">法律诊所<sup>1</sup></a></li>
 			
 		
 			
@@ -613,6 +597,22 @@ Content Cell  | Content Cell
 		
 			
 				<li><a href="/tags/IPv6/" title="IPv6">IPv6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Github优惠包/" title="Github优惠包">Github优惠包<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CUPL/" title="CUPL">CUPL<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Root/" title="Root">Root<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/小米/" title="小米">小米<sup>1</sup></a></li>
 			
 		
 		</ul>
