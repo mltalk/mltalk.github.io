@@ -1,10 +1,10 @@
 
-  <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
   
-    <title>Tags : Root | 石头君</title>
+    <title>tags | 石头君</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ming Lei">
@@ -12,11 +12,12 @@
 
     
     <meta property="og:type" content="website">
-<meta property="og:title" content="石头君">
-<meta property="og:url" content="http://yoursite.com/tags/Root/index.html">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="石头君">
+<meta property="og:updated_time" content="2016-05-06T11:53:16.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="石头君">
+<meta name="twitter:title" content="tags">
 
     
     
@@ -218,31 +219,43 @@
 </div>
       </header>
       <div id="container">
-        
-
+          
 <div class="archive-title" >
-  <h2 class="tag-icon">Root</h2>
-  
+<h2 class="tag-icon">Tags</h2>
+
+<a data-src="/tags/2017/" href="#2017" title="2017">2017<sup>1</sup></a>
+
+<a data-src="/tags/CUPL/" href="#CUPL" title="CUPL">CUPL<sup>1</sup></a>
+
+<a data-src="/tags/Github优惠包/" href="#Github优惠包" title="Github优惠包">Github优惠包<sup>1</sup></a>
+
+<a data-src="/tags/IPv6/" href="#IPv6" title="IPv6">IPv6<sup>1</sup></a>
+
+<a data-src="/tags/Markdown/" href="#Markdown" title="Markdown">Markdown<sup>1</sup></a>
+
+<a data-src="/tags/Root/" href="#Root" title="Root">Root<sup>1</sup></a>
+
+<a data-src="/tags/hexo/" href="#hexo" title="hexo">hexo<sup>1</sup></a>
+
+<a data-src="/tags/命令/" href="#命令" title="命令">命令<sup>1</sup></a>
+
+<a data-src="/tags/小米/" href="#小米" title="小米">小米<sup>1</sup></a>
+
+<a data-src="/tags/小米WiFi/" href="#小米WiFi" title="小米WiFi">小米WiFi<sup>1</sup></a>
+
+<a data-src="/tags/校园网/" href="#校园网" title="校园网">校园网<sup>1</sup></a>
+
+<a data-src="/tags/法律诊所/" href="#法律诊所" title="法律诊所">法律诊所<sup>1</sup></a>
+
+<a data-src="/tags/法的信徒/" href="#法的信徒" title="法的信徒">法的信徒<sup>1</sup></a>
+
 </div>
-<div id="main" class="archive-part clearfix">
-  <div id="archive-page">
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2016/07/28/小米4-安卓6-0-Root权限获取办法/" title="小米4 安卓6.0+ Root权限获取办法" itemprop="url">
-  
-
-    <time datetime="2016-07-28T06:26:26.000Z" itemprop="datePublished">2016-07-28</time>
-
-
-    <h1 itemprop="name">小米4 安卓6.0+ Root权限获取办法</h1>
-
-  </a>
-</section>
-
-
-  </div>
+<div id="main" class="archive-part">
+<div class="all-list-box"></div>
 </div>
+
+
+
 
       </div>
       <footer><div id="footer" >
@@ -335,6 +348,24 @@ $(document).ready(function(){
 
 
 
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var list    = $('.archive-title a'),
+      box     = $('.all-list-box'),
+      first   = $('.archive-title a:first-of-type');
+      box.load(first.attr('data-src').toString()+' #archive-page');
+      first.addClass('current');
+  list.each(function(){
+    $(this).click(function(){
+      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
+      box.load(listSrc);
+      list.removeClass('current');
+      $(this).addClass('current');
+     });  
+    });
+  }); 
+</script>
 
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
