@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="学习记录 用一周的时间学习了Python的一些基础语法，周末利用其中简单的语法实现了一个简陋的爬虫，抓取了本博客某一页的所有配图。  其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错  用到的知识：模块调用、定义函数、生成列表、遍历列表   代码如下">
+<meta name="description" content="学习记录 历程：约一周的时间熟悉了Python的基础语法，周末利用其中简单语法实现了一个简陋的爬虫——抓取了本博客某一页的所有配图。  其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错  用到的知识：模块调用、定义函数、生成列表、遍历列表  小插曲：编辑Markdown文件时由于tags格式错误导致“generateError”报错   代码如下">
 <meta name="keywords" content="编程,Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python学习日志（一）爬取特定页面的图片">
 <meta property="og:url" content="http://minglei-zh.com/2017/06/04/Python学习日志（一）爬取特定页面的图片/index.html">
 <meta property="og:site_name" content="STALK">
-<meta property="og:description" content="学习记录 用一周的时间学习了Python的一些基础语法，周末利用其中简单的语法实现了一个简陋的爬虫，抓取了本博客某一页的所有配图。  其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错  用到的知识：模块调用、定义函数、生成列表、遍历列表   代码如下">
-<meta property="og:updated_time" content="2017-06-04T14:19:40.214Z">
+<meta property="og:description" content="学习记录 历程：约一周的时间熟悉了Python的基础语法，周末利用其中简单语法实现了一个简陋的爬虫——抓取了本博客某一页的所有配图。  其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错  用到的知识：模块调用、定义函数、生成列表、遍历列表  小插曲：编辑Markdown文件时由于tags格式错误导致“generateError”报错   代码如下">
+<meta property="og:updated_time" content="2017-06-04T14:27:44.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python学习日志（一）爬取特定页面的图片">
-<meta name="twitter:description" content="学习记录 用一周的时间学习了Python的一些基础语法，周末利用其中简单的语法实现了一个简陋的爬虫，抓取了本博客某一页的所有配图。  其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错  用到的知识：模块调用、定义函数、生成列表、遍历列表   代码如下">
+<meta name="twitter:description" content="学习记录 历程：约一周的时间熟悉了Python的基础语法，周末利用其中简单语法实现了一个简陋的爬虫——抓取了本博客某一页的所有配图。  其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错  用到的知识：模块调用、定义函数、生成列表、遍历列表  小插曲：编辑Markdown文件时由于tags格式错误导致“generateError”报错   代码如下">
 
 
 
@@ -344,18 +344,46 @@
 
       
         <h3 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h3><ul>
-<li><p>用一周的时间学习了Python的一些基础语法，周末利用其中简单的语法实现了一个简陋的爬虫，抓取了本博客某一页的所有配图。</p>
+<li><p>历程：约一周的时间熟悉了Python的基础语法，周末利用其中简单语法实现了一个简陋的爬虫——抓取了本博客某一页的所有配图。</p>
 </li>
 <li><p>其中遇到的坑有：Python2与Python3语法不兼容，导致编写过程中多次报错</p>
 </li>
 <li><p>用到的知识：模块调用、定义函数、生成列表、遍历列表</p>
 </li>
+<li><p>小插曲：编辑Markdown文件时由于tags格式错误导致“generateError”报错</p>
+</li>
 </ul>
-<p>代码如下<br><a id="more"></a><br>‘’’</p>
-<h1 id="爬取特定页面上所有的图片"><a href="#爬取特定页面上所有的图片" class="headerlink" title="爬取特定页面上所有的图片"></a>爬取特定页面上所有的图片</h1><h1 id="by-minglei"><a href="#by-minglei" class="headerlink" title="by minglei"></a>by minglei</h1><h1 id="调用模块"><a href="#调用模块" class="headerlink" title="调用模块"></a>调用模块</h1><p>import urllib.request#调用urllib模块<br>import re #调用正则模块</p>
-<h1 id="定义一个获取页面内容的函数"><a href="#定义一个获取页面内容的函数" class="headerlink" title="定义一个获取页面内容的函数"></a>定义一个获取页面内容的函数</h1><p>def gethtml(url): # 给函数取一个名字【gethtml】<br>    page=urllib.request.urlopen(url)#函数的内容一：打开这个页面<br>    html=page.read()#函数的内容二：读取页面的内容并赋值给html<br>    return html#该函数最后返回一个名字为html的值</p>
-<h1 id="从html中解析出图片URL并下载"><a href="#从html中解析出图片URL并下载" class="headerlink" title="从html中解析出图片URL并下载"></a>从html中解析出图片URL并下载</h1><p>def getImg(html):#定义一个名为【getImg】的函数<br>    reg=r’src=”(<a href="http://.*?\.jpg)&quot;&#39;#这是解析图片地址的正则" target="_blank" rel="external">http://.*?\.jpg)&quot;&#39;#这是解析图片地址的正则</a><br>    imgre=re.compile(reg)#这个动作将正则表达式变成一个对象<br>    htmld=html.decode(‘utf-8’)#这一步是编码格式调整，出问题导致格式报错<br>    imglist=imgre.findall(htmld)#生成图片链接的列表<br>    x = 0<br>    for imgurl in imglist:#遍历图片列表内容<br>        urllib.request.urlretrieve(imgurl, ‘%s.jpg’ % x)#利用urlretrieve下载图片到程序文件夹，并进行命名<br>        x = x + 1</p>
-<h1 id="调用上面的函数下载图片"><a href="#调用上面的函数下载图片" class="headerlink" title="调用上面的函数下载图片"></a>调用上面的函数下载图片</h1><p>html=gethtml(“<a href="http://minglei-zh.com/2016/05/29/%E5%85%B3%E4%BA%8E%E6%B3%95%E5%A4%A7/">http://minglei-zh.com/2016/05/29/%E5%85%B3%E4%BA%8E%E6%B3%95%E5%A4%A7/</a>“)<br>getImg(html)<br>print(“all done”)<br>‘’’</p>
+<p>代码如下<br><a id="more"></a></p>
+<pre><code>
+# 爬取特定页面上所有的图片
+# by minglei
+
+# 调用模块
+import urllib.request#调用urllib模块
+import re #调用正则模块
+
+# 定义一个获取页面内容的函数
+def gethtml(url): # 给函数取一个名字【gethtml】
+    page=urllib.request.urlopen(url)#函数的内容一：打开这个页面
+    html=page.read()#函数的内容二：读取页面的内容并赋值给html
+    return html#该函数最后返回一个名字为html的值
+
+# 从html中解析出图片URL并下载
+def getImg(html):#定义一个名为【getImg】的函数
+    reg=r'src="(http://.*?\.jpg)"'#这是解析图片地址的正则
+    imgre=re.compile(reg)#这个动作将正则表达式变成一个对象
+    htmld=html.decode('utf-8')#这一步是编码格式调整，出问题导致格式报错
+    imglist=imgre.findall(htmld)#生成图片链接的列表
+    x = 0
+    for imgurl in imglist:#遍历图片列表内容
+        urllib.request.urlretrieve(imgurl, '%s.jpg' % x)#利用urlretrieve下载图片到程序文件夹，并进行命名
+        x = x + 1
+
+# 调用上面的函数下载图片
+html=gethtml("这里填写需要抓取的URL")
+getImg(html)
+print("all done")
+</code></pre>
 
       
     </div>
@@ -575,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习记录"><span class="nav-number">1.</span> <span class="nav-text">学习记录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取特定页面上所有的图片"><span class="nav-number"></span> <span class="nav-text">爬取特定页面上所有的图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#by-minglei"><span class="nav-number"></span> <span class="nav-text">by minglei</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用模块"><span class="nav-number"></span> <span class="nav-text">调用模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义一个获取页面内容的函数"><span class="nav-number"></span> <span class="nav-text">定义一个获取页面内容的函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从html中解析出图片URL并下载"><span class="nav-number"></span> <span class="nav-text">从html中解析出图片URL并下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用上面的函数下载图片"><span class="nav-number"></span> <span class="nav-text">调用上面的函数下载图片</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习记录"><span class="nav-number">1.</span> <span class="nav-text">学习记录</span></a></li></ol></div>
             
 
           </div>
